@@ -28,7 +28,7 @@ class ProductsManager {
             try {
                 const getProducts = await fs.promises.readFile(productsPath, 'utf-8');
                 const products = JSON.parse(getProducts);
-                if (products.lenght === 0) {
+                if (products.length === 0) {
                     product.id = 1;
                     products.push(product);
                     await fs.promises.writeFile(productsPath, JSON.stringify(products, null, 2));
@@ -37,7 +37,8 @@ class ProductsManager {
                         msg: "1st prod added"
                     }
                 }
-                product.id = products[products.lenght - 1].id + 1;
+                
+                product.id = products[products.length - 1].id + 1;
                 products.push(product);
                 await fs.promises.writeFile(productsPath, JSON.stringify(products, null, 2));
                 return {

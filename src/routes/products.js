@@ -21,7 +21,8 @@ router.get('/(:id)?', (req, res) => {
 })
 
 router.post('/',(req,res)=>{
-    productService.addProduct()
+    const body = req.body;
+    productService.addProduct(body).then(result=>res.send(result));
 })
 
 router.delete('/:id', (req, res) => {
@@ -33,7 +34,7 @@ router.delete('/:id', (req, res) => {
     productService.deleteById(req_id).then(product => res.send(product));
 })
 
-router.put('/:id', (req, res) => {
+// router.put('/:id', (req, res) => {
 
-})
+// })
 module.exports = router;
