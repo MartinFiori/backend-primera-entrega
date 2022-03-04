@@ -12,6 +12,12 @@ app.use(express.json());
 
 app.use('/api/products', productsRouter);
 app.use('/api/cart', cartRouter);
+app.get('*', (req, res) => {
+    res.send({
+        status: "error",
+        error: `Couldn't find route ${req.url}`
+    })
+})
 
 
 const PORT = process.env.PORT || 8080;
